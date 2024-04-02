@@ -13,6 +13,7 @@ let d;
 let h;
 let m;
 let s;
+let year;
 
 btn.addEventListener("click", checkStartTimer); // Если в переменной btn добавиться событие "клик", то выполни функцию "startTimer".
 function checkStartTimer() {
@@ -27,13 +28,16 @@ function checkStartTimer() {
 function startTimer() {
 
     //добавь в переменную то, что лежит  в пункте массива входных данных
-
-    y = timeinput[0].value || 0;
-    d = timeinput[1].value || 0;
-    h = timeinput[2].value || 0;
-    m = timeinput[3].value || 0;
-    s = timeinput[4].value || 0;
-
+    y = +timeinput[0].value || 0;
+    d = +timeinput[1].value || 0;
+    h = +timeinput[2].value || 0;
+    m = +timeinput[3].value || 0;
+    s = +timeinput[4].value || 0;
+    year = Math.floor(y/4);
+    d = d+year;
+    if (s == 0){
+        s++;
+    }
 
 
     timerInterval = setInterval(changeTimer, 1000); // переменная для включения (изменения времени в таймере) таймера с интервалом в 1 секунду
@@ -47,25 +51,25 @@ function changeTimer() { //Функция измени время в тайме�
 
     if (s == 1 && m > 0) {
         s = 60;
-        m--
+        m--;
     }else if (s == 1 && m == 0 && h > 0) {
         m = 59;
         s = 60;
-        h--
+        h--;
     }else if (s == 1 && m == 0 && h == 0 && d > 0) {
         h = 23;
         m = 59;
         s = 60;
-        d--
+        d--;
     }else if (s == 1 && m == 0 && h == 0 &&d == 0 && y > 0) {
         d = 364;
         h = 23;
         m = 59;
         s = 60;
-        y--
+        y--;
     }
 
-    s--
+    s--;
     stop = checkTimer(y, d, h, m, s);
     if (stop == true) {
         clearInterval(timerInterval);
