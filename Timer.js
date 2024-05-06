@@ -5,6 +5,7 @@
 let btn = document.querySelector(`#start`);
 let timeinput = document.querySelectorAll(`.time`);
 let timeoutput = document.querySelector(`#outputtext`);
+let soundEnd = document.querySelector(`#soundend`);
 let timerInterval;
 let stop = false; // переменная которая выключает таймер
 
@@ -74,6 +75,8 @@ function changeTimer() { //Функция измени время в тайме�
     if (stop == true) {
         clearInterval(timerInterval);
         changeText(y, d, h, m, s);
+        soundEnd.src = "./sounds/DuHast.mp3";
+        soundEnd.play();
     } else {
         changeText(y, d, h, m, s);
     }
