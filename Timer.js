@@ -5,6 +5,7 @@
 let btn = document.querySelector(`#start`);
 let timeinput = document.querySelectorAll(`.time`);
 let timeoutput = document.querySelector(`#outputtext`);
+let soundStop = document.querySelector(`#soundstop`);
 let soundEnd = document.querySelector(`#soundend`);
 let timerInterval;
 let stop = false; // переменная которая выключает таймер
@@ -17,6 +18,10 @@ let s;
 let year;
 
 btn.addEventListener("click", checkStartTimer); // Если в переменной btn добавиться событие "клик", то выполни функцию "startTimer".
+soundStop.addEventListener("click", stopSound);
+function stopSound() {
+    soundEnd.src='';
+}
 function checkStartTimer() {
     if (timerInterval >= 1) {
         clearInterval(timerInterval);
